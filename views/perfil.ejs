@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Sad Bot</title>
+    <meta name="description" content="Sad Bot">
+    <link id="favicon" rel="icon" href="https://cdn.discordapp.com/attachments/508030929571282964/621004160418054164/Sad_Bot.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta property="og:type" content="website">
+    <meta name=”distribution” content=”global” />
+    <meta name="theme-color" content="#7289da">
+    <meta property="og:url" content="https://sad-bot1.glitch.me">
+    <meta property="og:title" content="Sad Bot">
+    <meta property="og:site_name" content="Sad Bot">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/508030929571282964/621004160418054164/Sad_Bot.png">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+    <!-- Compiled and minified CSS Materializecss -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <div id="themeDiv"><link href="../css/black.css" rel="stylesheet" id="theme" /></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body> 
+    
+    
+    
+  
+   <header>
+      <nav>
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>  <a href="https://polm174.gitbook.io/sad-bot/" rel="nofollow" target="_blank">Documentación</a> </li>
+        <li>  <a href="/contribuidores" >Contribuidores</a> </li>
+        <%if(login === 'si'){%>
+        <li><a href="/logout">Salir</a></li>
+        <%}%>
+      </ul>
+    </div>
+  </nav>
+    </header> 
+    
+
+    <main>
+
+     
+      
+
+      
+
+      
+      
+      <div class="container container-tab">
+
+  
+          <div id="servidores" class="col s12">
+        <div class="row norown center-align">
+
+             <span class="title-profile">
+               <br>
+                Servidores que administras
+              </span>  
+            </div>
+            
+            
+                <ul class="collection">
+                  <% servidores.map(dato => { %>
+                  <li class="collection-item avatar">
+                  <div class="contenidofon">
+                    
+                    
+                    
+                    <a href="/server/<%= dato.id%>" >
+
+
+                      <% if(!dato.icon) {%>
+                      <img class="circle responsive-img"  src="https://images-ext-1.discordapp.net/external/NAqkMZNPJgDiWBrSDqniAD1_sbWfiPqF4mgZyCtVs6s/https/discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png?width=231&height=231" size="50" radius="25" alt="">
+
+                        <div class="nomc1">
+                           <div class="nomc2"><%= dato.name %></div>    
+                        </div>  
+                      <% }else{%>
+                                            
+                      <img class="circle responsive-img"  src="https://cdn.discordapp.com/icons/<%=dato.id%>/<%=dato.icon%>.png" size="50" radius="25" alt="">
+                        <div class="nomc1">
+                           <div class="nomc2"><%= dato.name %></div>    
+                        </div>  
+                      <% } %>
+
+                      <% if(client.guilds.cache.get(dato.id) == undefined) {  %>
+                      <div class="secondary-content">
+                          <input type="button" class="botonnesta" value="Añadir Sad Bot">
+                      </div>
+                      
+                      <% }else{ %>
+                      
+                      
+                  <div class="secondary-content">
+                      <input type="button" class="botonesta" value="Ir al panel de control">
+                  </div>
+                      <% } %>
+
+                    </a>
+                      </div>
+
+                  </li>
+
+                  <% }) %>
+                </ul>
+
+            </div>
+
+
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer>
+<div class="container center-align pd-2">
+  <div class="footer-copyright">
+    
+       © 2020 Sad Bot
+      
+    
+  </div>
+</div>    </footer>
+    
+    <!-- Compiled and minified JavaScript Materializecss -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.com/libraries/Chart.js"></script>
+    <script src="../js/script.js"></script>
+    </body>
+  </body>
+</html>

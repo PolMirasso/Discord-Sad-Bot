@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Sad Bot</title>
+    <meta name="description" content="Sad Bot">
+    <link id="favicon" rel="icon" href="https://cdn.discordapp.com/attachments/508030929571282964/621004160418054164/Sad_Bot.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta property="og:type" content="website">
+    <meta name=”distribution” content=”global” />
+    <meta name="theme-color" content="#7289da">
+    <meta property="og:url" content="https://sad-bot1.glitch.me">
+    <meta property="og:title" content="Sad Bot">
+    <meta property="og:site_name" content="Sad Bot">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/508030929571282964/621004160418054164/Sad_Bot.png">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+    <!-- Compiled and minified CSS Materializecss -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <div id="themeDiv"><link href="../../css/black.css" rel="stylesheet" id="theme" /></div>
+
+  </head>
+  <body> 
+    
+   <header>
+      <nav>
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>  <a href="https://polm174.gitbook.io/sad-bot/" rel="nofollow" target="_blank">Documentación</a> </li>
+        <li>  <a href="/contribuidores" >Contribuidores</a> </li>
+        <%if(login === 'si'){%>
+        <li><a href="/logout">Salir</a></li>
+        <%}%>
+      </ul>
+    </div>
+  </nav>
+    </header> 
+
+    
+
+     <div class="banner-container">
+      <div class="contit">
+      <div class="row norown center-align p-top">
+        <div class="col s12">
+          <div>
+            <% if(guild.icon) { %>
+            <img class="circle responsive-img" src="https://cdn.discordapp.com/icons/<%=guild.id%>/<%=guild.icon%>.png" width="200px" height="200px" alt="">
+            <% } else { %> 
+            <img class="circle responsive-img" src="https://images-ext-1.discordapp.net/external/NAqkMZNPJgDiWBrSDqniAD1_sbWfiPqF4mgZyCtVs6s/https/discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png?width=231&height=231" width="200px" height="200px" alt="">
+            <% } %>
+            <p>
+              <span class="banner-name-server"> 
+                 <%= `${guild.name}` %>
+              </span>  
+            </p> 
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+      
+
+        <body>
+          <main>
+      <div class="container server-info">
+
+
+   
+        
+        
+        
+         <div class="body-server-tabs">
+              <h2>
+                Utilidad:
+              </h2>
+           <div class="row">
+            <div class="col s12">
+              <ul class="tabs">
+                <li class="tab col s4"><a class="active" href="#prefix">PREFIX</a></li>
+                <li class="tab col s4"><a href="#anuncio">Enviar un mensaje/anuncio</a></li>
+                <li class="tab col s4"><a href="#colembed">Color embed:</a></li>
+              </ul>
+            </div>
+            <div id="msgInterval" class="col s12">
+
+            <div id="prefix" class="col s12">
+              <h2>
+                Prefix del servidor:
+              </h2>
+              <form class="col s12" method="POST" action="/server/<%=guild.id%>/prefix">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">info_outline</i>
+                        <input id="icon_prefix" type="text" name="newPrefix" class="validate">
+                      <label for="icon_prefix"><%= prefixe %> </label>
+                    </div>
+                     <div class="right pd-2">
+                       <button class="btn waves-effect bg-btn" type="submit" name="action">Guardar
+                          <i class="material-icons right">done</i>
+                      </button>
+                   </div>
+                   </div>
+              </form> 
+            </div>
+
+              
+              <div id="anuncio" class="col s12">
+        <section class="container-send-msg">
+            <h2>
+              Enviar un mensaje/anuncio:
+            </h2>
+            <div class="row">
+              <form class="col s12" method="post" id="enviar_MSG" action="/server/<%=guild.id%>">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <select id="select-channel" name="channel_ID"> 
+                      <option value="no_select" disabled selected>Selecciones un canal</option> 
+                      <% guild.channels.cache.filter(ch => ch.type === 'text').filter(p => p.permissionsFor(client.user).has('SEND_MESSAGES') && p.permissionsFor(client.user).has('READ_MESSAGES')).map(lc => {%>
+                      <option value="<%=lc.id %>">#<%=lc.name%></option>
+                      <%   
+                      });
+                      %>
+                    </select>
+                  
+                  </div>
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">chat</i>
+                    <input id="icon_prefix" type="text" name="msg_send" id="msg_input" placeholder= "Escriva su mensaje aqui" class="validate">                    
+                  </div>
+                  <div class="input-field col s12">
+                    <button class="btn waves-effect waves-light" type="submit" id="btn_Enviar" onClick="enviar()" name="action">Enviar
+                      <i class="material-icons right">send</i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </section>
+            </div>
+              
+            
+            <div id="colembed" class="col s12">
+              <h2>
+                Elije el color del embed del servidor:
+              </h2>
+              <form class="col s12" method="POST" action="/server/<%=guild.id%>/colembed">
+                  <div class="row">
+                    
+                    
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">color_lens</i>
+                    <input id="icon_prefix" type="color" name="cembed" id="msg_input" class="validate" value= <%= colembed %> >
+                  </div>
+                    
+                    
+                     <div class="right pd-2">
+                       <button class="btn waves-effect bg-btn" type="submit" name="action">Guardar
+                          <i class="material-icons right">done</i>
+                      </button>
+                   </div>
+                   </div>
+              </form> 
+            </div>
+
+              
+              
+        </section>
+              
+
+              
+            </div>
+
+              
+              
+            </div>
+            
+          </div>
+        </div>
+
+        <hr>
+
+      </div>
+
+    </body>
+    </main>
+    <footer>
+      <div class="container center-align pd-2">
+      <div class="footer-copyright">
+    
+       © 2020 Sad Bot
+      
+    
+        </div>
+      </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.com/libraries/Chart.js"></script>
+    <script src="../../js/script.js"></script>
+  </body>
+</html>

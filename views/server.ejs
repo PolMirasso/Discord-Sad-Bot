@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Sad Bot</title>
+    <meta name="description" content="Sad Bot">
+    <link id="favicon" rel="icon" href="https://cdn.discordapp.com/attachments/508030929571282964/621004160418054164/Sad_Bot.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta property="og:type" content="website">
+    <meta name=”distribution” content=”global” />
+    <meta name="theme-color" content="#7289da">
+    <meta property="og:url" content="https://sad-bot1.glitch.me">
+    <meta property="og:title" content="Sad Bot">
+    <meta property="og:site_name" content="Sad Bot">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/508030929571282964/621004160418054164/Sad_Bot.png">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+    <!-- Compiled and minified CSS Materializecss -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <div id="themeDiv"><link href="../css/black.css" rel="stylesheet" id="theme" /></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  
+  
+   <header>
+      <nav>
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>  <a href="https://polm174.gitbook.io/sad-bot/" rel="nofollow" target="_blank">Documentación</a> </li>
+        <li>  <a href="/contribuidores" >Contribuidores</a> </li>
+        <%if(login === 'si'){%>
+        <li><a href="/logout">Salir</a></li>
+        <%}%>
+      </ul>
+    </div>
+  </nav>
+    </header> 
+
+     <div class="banner-container">
+       
+
+       
+      <div class="row norown center-align p-top">
+        <div class="col s12">
+          <div>
+            <% if(guild.icon) { %>
+            <img class="circle responsive-img" src="https://cdn.discordapp.com/icons/<%=guild.id%>/<%=guild.icon%>.png" width="200px" height="200px" alt="">
+            <% } else { %> 
+            <img class="circle responsive-img" src="https://images-ext-1.discordapp.net/external/NAqkMZNPJgDiWBrSDqniAD1_sbWfiPqF4mgZyCtVs6s/https/discordapp.com/assets/6debd47ed13483642cf09e832ed0bc1b.png?width=231&height=231" width="200px" height="200px" alt="">
+            <% } %>
+            <p>
+              <span class="banner-name-server"> 
+                 <%= `${guild.name}` %>
+              </span>  
+            </p> 
+          </div>   
+        </div>
+      </div>
+  </div>
+
+    <body> 
+     <div class="containban">
+      <div class="container server-info">
+        <div class="body-server-stats">
+          <div class="row">
+            <div class="col s12">
+            <h2 class="h2-perfil">
+              Estadisticas del servidor:
+            </h2>    
+            <div class="estadisticasconfi">
+              <div class="row center-align row-stats">
+                <div class="col s3">
+                 <div class="box-stats z-depth-3">
+                  <p>
+                    Miembros
+                  </p>
+                    <span class="text-stats">
+                         <%= guild.members.cache.size %>
+                    </span>
+                 </div>
+
+                </div>
+                <div class="col s3">
+                 <div class="box-stats z-depth-3">
+                  <p>
+                    Canales
+                  </p>
+                    <span class="text-stats">
+                         <%= guild.channels.cache.size %>
+                    </span>
+                 </div>
+
+                </div>
+                <div class="col s3">
+                 <div class="box-stats z-depth-3">
+                  <p>
+                    Roles
+                  </p>
+                    <span class="text-stats">
+                         <%= guild.roles.cache.size %>
+                    </span>
+                 </div>
+
+                </div>
+                <div class="col s3">
+                 <div class="box-stats z-depth-3">
+                  <p>
+                    Emojis
+                  </p>
+                    <span class="text-stats">
+                         <%= guild.emojis.cache.size %>
+                    </span>
+                 </div>
+
+                </div>
+                <div class="col s6">
+                 <div class="box-stats z-depth-3">
+                  <p>
+                    Region
+                  </p>
+                    <span class="text-stats">
+                         <%= reg %>
+                    </span>
+                 </div>
+
+                </div>
+                <div class="col s6">
+                 <div class="box-stats z-depth-3">
+                  <p>
+                    Baneados
+                  </p>
+                    <span class="text-stats">
+                      <%= bans %>
+                    </span>
+                 </div>
+
+                </div>
+                
+                   
+              </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+ 
+        
+        <br>
+        
+
+        
+         <div class="body-server-stats">
+          <div class="row">
+            <div class="col s12">
+            <h2 class="h2-perfil">
+              Elija el apartado que desea personalizar
+            </h2>    
+            <div class="estadisticasconfi">
+              <div class="row center-align row-stats">
+                <div class="col s4">
+                  <a href="confi-moderacion/<%=guild.id%>">
+                 <div class="box-stats z-depth-3">
+                  <div class="estadisticastitulo">
+                    Moderación
+                  </div>
+                    <span class="estadisticasdesc">
+                           Personaliza la automoderación del bot
+                    </span>
+                 </div>
+                 </a>
+                </div>
+                <div class="col s4">
+                  <a href="confi-entradas-salidas/<%=guild.id%>">
+                 <div class="box-stats z-depth-3">
+                  <div class="estadisticastitulo">
+                    Entradas - Salidas
+                  </div>
+                    <span class="estadisticasdesc">
+                           Personaliza las entradas / salidas del servidor
+                    </span>
+                 </div>
+                 </a>
+                </div>
+                <div class="col s4">
+                  <a href="confi-utilidad/<%=guild.id%>">
+                 <div class="box-stats z-depth-3">
+                  <div class="estadisticastitulo">
+                    Utilidad
+                  </div>
+                    <span class="estadisticasdesc">
+                           Personaliza la economia del bot
+                    </span>
+                 </div>
+                 </a>
+                </div>
+                <div class="col s6">
+                  <a href="confi-niveles/<%=guild.id%>">
+                 <div class="box-stats z-depth-3">
+                  <div class="estadisticastitulo">
+                    Niveles
+                  </div>
+                    <span class="estadisticasdesc">
+                           Personaliza la economia del bot
+                    </span>
+                 </div>
+                 </a>
+                </div>
+                <div class="col s6">
+                  <a href="confi-economia/<%=guild.id%>">
+                 <div class="box-stats z-depth-3">
+                  <div class="estadisticastitulo">
+                    Economia
+                  </div>
+                    <span class="estadisticasdesc">
+                           Personaliza la economia del bot
+                    </span>
+                 </div>
+                 </a>
+                </div>
+
+                
+                
+                
+                
+                
+              </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+</main></div>
+          
+  </div>
+          
+  </body>
+      
+      
+	</div>
+
+
+  </html>
+	</div>
+    
+
+
+  </head>
+</html>

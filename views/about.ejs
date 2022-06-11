@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Sad Bot</title>
+    <meta name="description" content="Sad Bot">
+    <link id="favicon" rel="icon" href="https://cdn.discordapp.com/attachments/508030929571282964/621004160418054164/Sad_Bot.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta property="og:type" content="website">
+    <meta name=”distribution” content=”global” />
+    <meta name="theme-color" content="#7289da">
+    <meta property="og:url" content="https://sad-bot1.glitch.me">
+    <meta property="og:title" content="Sad Bot">
+    <meta property="og:site_name" content="Sad Bot">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/508030929571282964/621004160418054164/Sad_Bot.png">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+    <!-- Compiled and minified CSS Materializecss -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <div id="themeDiv"><link href="../css/black.css" rel="stylesheet" id="theme" /></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../js/changeTheme.js"></script>
+  </head>
+  <body> 
+    <header>
+<nav>
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/comandos" target="_black"><%= `Comandos`%></a></li>
+        <%if(login === 'si'){%>
+        <li><a href="/logout">Salir</a></li>
+        <%}%>
+      </ul>
+    </div>
+  </nav>
+    </header>
+
+<main>
+<div class="col s12 center-align">
+
+  <h1>
+    <%= `¿Deseas ingresar?`%>
+  </h1>
+  <a href="<%= login === 'si' ? '/perfil' : '/login' %>" class="waves-effect waves-light btn bg-btn"><i class="material-icons left ">account_circle</i><%= login === 'si' ? 'Perfil' : 'Login' %></a>
+  </div>
+</main>
+    <footer>
+<div class="container center-align pd-2">
+  <div class="footer-copyright">
+    
+       © 2019 Sad Bot
+      
+    
+  </div>
+</div>    </footer>
+
+    
+    <!-- Compiled and minified JavaScript Materializecss -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.com/libraries/Chart.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
